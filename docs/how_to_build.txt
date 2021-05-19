@@ -27,22 +27,22 @@ Linux - Ubuntu 14.04
     6. You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders. 
 
 Linux - Ubuntu 20.10
-    2. Install gcc10 boost ssl packages. 
+    1. Install gcc10 boost ssl packages. 
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt update
 sudo apt-get install g++-10 libboost-all-dev libssl-dev -y
-    3. Install CMake
+    2. Install CMake
 sudo apt-get install cmake
-    4. Add proper QT 5 repository depending on your system 
+    3. Add proper QT 5 repository depending on your system 
 sudo apt-get install qt5-default qttools5-dev libqt5svg5-dev libqt5x11extras5-dev qtdeclarative5-dev
 export PATH=/usr/lib/qt5/bin:$PATH
-    5. Get Source from GITHUB
+    4. Get Source from GITHUB
 git clone https://github.com/Litecash-Dev/litecash.git
 cd litecash
-    6. Go to Litecash project folder and call
+    5. Go to Litecash project folder and call
 cmake -DCMAKE_BUILD_TYPE=Release . 
 make -j$(nproc)
-    7. You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders. 
+    6. You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders. 
 
 Fedora 29
     1. Install dependencies 
