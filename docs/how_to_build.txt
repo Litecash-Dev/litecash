@@ -27,6 +27,7 @@ Linux - Ubuntu 14.04
     6. You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders. 
 
 Linux - Ubuntu 20.10
+
     1. Install gcc10 boost ssl packages. 
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt update
@@ -44,6 +45,25 @@ cmake -DCMAKE_BUILD_TYPE=Release .
 make -j$(nproc)
     6. You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders. 
 
+Linux raspberrypi 5.10
+	Raspberry Pi OS with desktop
+	Release date: March 4th 2021
+	Kernel version: 5.10
+    1. Install snap cmake git gcc8 boost ssl packages. 
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install snapd
+sudo reboot
+sudo snap install core
+sudo snap install cmake --classic
+sudo apt-get install git g++-8 libboost-all-dev libssl-dev -y
+    2. Get Source from GITHUB
+git clone https://github.com/Litecash-Dev/litecash.git
+    3. Go to Litecash project folder and call
+cd litecash
+cmake -DLITECASH_NO_QT_UI_WALLET=1 -DARCH_NATIVE=1 -DCMAKE_CXX_FLAGS=-Wno-sign-compare -DCMAKE_BUILD_TYPE=Release .
+make -j$(nproc)
+    4. You'll find binaries in litecash/..., wallet/..., explorer/... subfolders. 
 Fedora 29
     1. Install dependencies 
 # General build tools
