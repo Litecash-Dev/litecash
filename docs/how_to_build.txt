@@ -1,39 +1,71 @@
-
-How to build
-------------
+﻿How to build
 
 Windows
--------
-Install Visual Studio >= 2017 with CMake support.
-Download and install Boost prebuilt binaries https://sourceforge.net/projects/boost/files/boost-binaries/1.68.0/boost_1_68_0-msvc-14.1-64.exe, also add BOOST_ROOT to the Environment Variables.
-Download and install OpenSSL prebuilt binaries https://slproweb.com/products/Win32OpenSSL.html (Win64 OpenSSL v1.1.0h for example) and add OPENSSL_ROOT_DIR to the Environment Variables.
-Download and install QT 5.11 https://download.qt.io/official_releases/qt/5.11/5.11.0/qt-opensource-windows-x86-5.11.0.exe.mirrorlist and add QT5_ROOT_DIR to the Environment Variables (usually it looks like .../5.11.0/msvc2017_64), also add QML_IMPORT_PATH (it should look like %QT5_ROOT_DIR%\qml). BTW disabling system antivirus on Windows makes QT installing process much faster.
-Add .../qt511/5.11.1/msvc2017_64/bin and .../boost_1_68_0/lib64-msvc-14.1 to the System Path.
-Open project folder in Visual Studio, select your target (Release-x64 for example, if you downloaded 64bit Boost and OpenSSL) and select CMake -> Build All.
-Go to CMake -> Cache -> Open Cache Folder -> litecash (you'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders).
-
+    1. Install Visual Studio >= 2017 with CMake support. 
+    2. Download and install Boost prebuilt binaries https://sourceforge.net/projects/boost/files/boost-binaries/1.68.0/boost_1_68_0-msvc-14.1-64.exe, also add BOOST_ROOT to the Environment Variables. 
+    3. Download and install OpenSSL prebuilt binaries https://slproweb.com/products/Win32OpenSSL.html (Win64 OpenSSL v1.1.0h for example) and add OPENSSL_ROOT_DIR to the Environment Variables. 
+    4. Download and install QT 5.11 https://download.qt.io/official_releases/qt/5.11/5.11.0/qt-opensource-windows-x86-5.11.0.exe.mirrorlist and add QT5_ROOT_DIR to the Environment Variables (usually it looks like .../5.11.0/msvc2017_64), also add QML_IMPORT_PATH (it should look like %QT5_ROOT_DIR%\qml). BTW disabling system antivirus on Windows makes QT installing process much faster. 
+    5. Add .../qt511/5.11.1/msvc2017_64/bin and .../boost_1_68_0/lib64-msvc-14.1 to the System Path. 
+    6. Open project folder in Visual Studio, select your target (Release-x64 for example, if you downloaded 64bit Boost and OpenSSL) and select CMake -> Build All. 
+    7. Go to CMake -> Cache -> Open Cache Folder -> litecash (you'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders). 
 Linux - Ubuntu 14.04
---------------------
-Install gcc7 boost ssl packages.
+    1. Install gcc7 boost ssl packages. 
   sudo add-apt-repository ppa:ubuntu-toolchain-r/test
   sudo apt update
   sudo apt install g++-7 libboost-all-dev libssl-dev -y
-Set it up so the symbolic links gcc, g++ point to the newer version:
+    2. Set it up so the symbolic links gcc, g++ point to the newer version: 
   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 \
                            --slave /usr/bin/g++ g++ /usr/bin/g++-7 
   sudo update-alternatives --config gcc
   gcc --version
   g++ --version
-Install latest CMake
+    3. Install latest CMake 
   wget "https://cmake.org/files/v3.12/cmake-3.12.0-Linux-x86_64.sh"
   sudo sh cmake-3.12.0-Linux-x86_64.sh --skip-license --prefix=/usr
-Add proper QT 5.11 repository depending on your system https://launchpad.net/~beineri (for example, choose Qt 5.10.1 for /opt Trusty if you have Ubuntu 14.04), install sudo apt-get install qt510declarative qt510svg packages and add export PATH=/opt/qt511/bin:$PATH.
-Go to Litecash project folder and call cmake -DCMAKE_BUILD_TYPE=Release . && make -j4.
-You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders.
+    4. Add proper QT 5.11 repository depending on your system https://launchpad.net/~beineri (for example, choose Qt 5.10.1 for /opt Trusty if you have Ubuntu 14.04), install sudo apt-get install qt510declarative qt510svg packages and add export PATH=/opt/qt511/bin:$PATH. 
+    5. Go to Litecash project folder and call cmake -DCMAKE_BUILD_TYPE=Release . && make -j4. 
+    6. You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders. 
 
+Linux - Ubuntu 20.10
+
+    1. Install gcc10 boost ssl packages. 
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt update
+sudo apt-get install g++-10 libboost-all-dev libssl-dev -y
+    2. Install CMake
+sudo apt-get install cmake
+    3. Add proper QT 5 repository depending on your system 
+sudo apt-get install qt5-default qttools5-dev libqt5svg5-dev libqt5x11extras5-dev qtdeclarative5-dev
+export PATH=/usr/lib/qt5/bin:$PATH
+    4. Get Source from GITHUB
+git clone https://github.com/Litecash-Dev/litecash.git
+    5. Go to Litecash project folder and call
+cd litecash
+cmake -DCMAKE_BUILD_TYPE=Release . 
+make -j$(nproc)
+    6. You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders. 
+
+Linux raspberrypi 5.10
+	Raspberry Pi OS with desktop
+	Release date: March 4th 2021
+	Kernel version: 5.10
+    1. Install snap cmake git gcc8 boost ssl packages. 
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install snapd
+sudo reboot
+sudo snap install core
+sudo snap install cmake --classic
+sudo apt-get install git g++-8 libboost-all-dev libssl-dev -y
+    2. Get Source from GITHUB
+git clone https://github.com/Litecash-Dev/litecash.git
+    3. Go to Litecash project folder and call
+cd litecash
+cmake -DLITECASH_NO_QT_UI_WALLET=1 -DARCH_NATIVE=1 -DCMAKE_CXX_FLAGS=-Wno-sign-compare -DCMAKE_BUILD_TYPE=Release .
+make -j$(nproc)
+    4. You'll find binaries in litecash/..., wallet/..., explorer/... subfolders. 
 Fedora 29
----------
-Install dependencies
+    1. Install dependencies 
 # General build tools
 sudo dnf install libtool make autoconf automake gettext
 # C/C++ stuff
@@ -42,18 +74,18 @@ sudo dnf install gcc-c++ libstdc++-static cmake boost-devel
 sudo dnf install openssl-devel zlib-devel
 # GUI build tooling (QT in this case)
 sudo dnf install qt5-qtbase-devel qt5-linguist qt5-qtsvg-devel qt5-qtwayland-devel
-Go to the Litecash project folder and start the release build
+    2. Go to the Litecash project folder and start the release build 
 export PATH=${PATH}:/usr/lib64/qt5/bin
 cmake -DCMAKE_BUILD_TYPE=Release . && make -j4
-You'll find the the litecash-node binary (node) in the litecash folder, litecash-wallet (cli wallet) in the wallet folder and LitecashWallet (GUI wallet) in the ui folder.
+    3. You'll find the the litecash-node binary (node) in the litecash folder, litecash-wallet (cli wallet) in the wallet folder and LitecashWallet (GUI wallet) in the ui folder. 
 At the moment step #2 can take a lot of time (a few hours) due to the bug in QT: QTBUG-27936. Use -DLITECASH_NO_QT_UI_WALLET=On to skip building the UI.
-
 Mac
----
-Install Brew Package Manager.
-Installed necessary packages using brew install openssl boost cmake command.
-Download and install QT5.11 from the official website https://download.qt.io/new_archive/qt/5.11/5.11.0/qt-opensource-mac-x64-5.11.0.dmg.mirrorlist 
-Add export OPENSSL_ROOT_DIR="/usr/local/opt/openssl" and export PATH=/Users/<username>/Qt5.11.0/5.11.0/clang_64/bin:$PATH to the Environment Variables.
-Go to Litecash project folder and call cmake -DCMAKE_BUILD_TYPE=Release . && make -j4.
-You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders.
+    1. Install Brew Package Manager. 
+    2. Installed necessary packages using brew install openssl boost cmake command. 
+    3. Download and install QT5.11 from the official website https://download.qt.io/official_releases/qt/5.11/5.11.0/qt-opensource-mac-x64-5.11.0.dmg.mirrorlist 
+    4. Add export OPENSSL_ROOT_DIR="/usr/local/opt/openssl" and export PATH=/Users/<username>/Qt5.11.0/5.11.0/clang_64/bin:$PATH to the Environment Variables. 
+    5. Go to Litecash project folder and call cmake -DCMAKE_BUILD_TYPE=Release . && make -j4. 
+    6. You'll find binaries in litecash/..., wallet/..., ui/..., explorer/... subfolders. 
 If you don't want to build UI don't install QT5 and add -DLITECASH_NO_QT_UI_WALLET=On command line parameter when you are calling cmake.
+
+
