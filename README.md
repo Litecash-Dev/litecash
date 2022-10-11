@@ -1,21 +1,44 @@
 
-![alt text](https://github.com/Litecash-Dev/litecash/blob/master/images/icon128.png "Litecash Logo")
+![alt text](https://github.com/Litecash-Dev/litecash-media/blob/main/images/logos/litecash_round_black_border_128x128.png "Litecash Logo")
 
 Litecash is the next generation scalable, confidential cryptocurrency based on an elegant and innovative [Mimblewimble protocol](https://docs.beam.mw/Mimblewimble.pdf).
 
 [Telegram](https://t.me/litecashgroup) | [Litecash Discord](https://discord.gg/kga9sgg)
 
 
-Website:
+### Website:
 
 https://lite-cash.com
 
 
-Peers:
+### Explorer:
+
+https://explorer.lite-cash.com
+
+
+### Peers:
 
 explorer.lite-cash.com:10000
 
 ca1.lite-cash.com:10000
+
+us1.lite-cash.com:10000
+
+
+### Mining Pools:
+
+https://gibs.cash (Official LiteCash Pool)
+
+https://www2.coinmine.pl/cash/ (Community Provided Pool)
+
+### Exchanges:
+
+BTC - https://tradeogre.com/exchange/BTC-CASH
+LTC - https://tradeogre.com/exchange/LTC-CASH
+USDT - https://polarity.exchange/dex?assetId2=37n4vgAUKaox1mNeE7vb45V1AWbUMsyrtq7fMVGkL8f1&assetId1=7RB3BWayeCVPq3kkpkeJZAFv2DYCB5gEwnutEpRofaw4
+USDT - https://faithswap.finance/exchange.html
+BTC - https://x.vite.net/trade?symbol=CASH-000_BTC-000
+Multiple - https://wallet.turtlenetwork.eu/ (TurtleNetwork DEX)
 
 
 # Features (ie. Things that make Litecash special)
@@ -40,7 +63,9 @@ ca1.lite-cash.com:10000
 - Sept 2019      : Project updated to 2.0
 - Nov  2019      : Project updated to 2.5
 - Apr 2021       : Development resumed
-
+- Oct 2021       : USDT listing pair on Polarity.exchange
+- June 2022      : TN node created to distribute LiteCash rewards for staking / leasing TN
+- July 2022      : USDT swap on Faithswap.finance
 
 # Current status
 
