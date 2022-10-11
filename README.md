@@ -34,10 +34,15 @@ https://www2.coinmine.pl/cash/ (Community Provided Pool)
 ### Exchanges:
 
 BTC - https://tradeogre.com/exchange/BTC-CASH
+
 LTC - https://tradeogre.com/exchange/LTC-CASH
+
 USDT - https://polarity.exchange/dex?assetId2=37n4vgAUKaox1mNeE7vb45V1AWbUMsyrtq7fMVGkL8f1&assetId1=7RB3BWayeCVPq3kkpkeJZAFv2DYCB5gEwnutEpRofaw4
+
 USDT - https://faithswap.finance/exchange.html
+
 BTC - https://x.vite.net/trade?symbol=CASH-000_BTC-000
+
 Multiple - https://wallet.turtlenetwork.eu/ (TurtleNetwork DEX)
 
 
