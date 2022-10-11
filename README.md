@@ -6,17 +6,17 @@ Litecash is the next generation scalable, confidential cryptocurrency based on a
 [Telegram](https://t.me/litecashgroup) | [Litecash Discord](https://discord.gg/kga9sgg)
 
 
-### Website:
+#### Website:
 
 https://lite-cash.com
 
 
-### Explorer:
+#### Explorer:
 
 https://explorer.lite-cash.com
 
 
-### Peers:
+#### Peers:
 
 explorer.lite-cash.com:10000
 
@@ -25,13 +25,13 @@ ca1.lite-cash.com:10000
 us1.lite-cash.com:10000
 
 
-### Mining Pools:
+#### Mining Pools:
 
 https://gibs.cash (Official LiteCash Pool)
 
 https://www2.coinmine.pl/cash/ (Community Provided Pool)
 
-### Exchanges:
+#### Exchanges:
 
 BTC - https://tradeogre.com/exchange/BTC-CASH
 
@@ -69,6 +69,7 @@ Multiple - https://wallet.turtlenetwork.eu/ (TurtleNetwork DEX)
 - Nov  2019      : Project updated to 2.5
 - Apr 2021       : Development resumed
 - Oct 2021       : USDT listing pair on Polarity.exchange
+- Dec 2021       : Wallet updated to version 2.5.96
 - June 2022      : TN node created to distribute LiteCash rewards for staking / leasing TN
 - July 2022      : USDT swap on Faithswap.finance
 
