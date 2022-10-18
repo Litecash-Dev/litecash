@@ -1,6 +1,8 @@
-# Build static QT5
+# This doc is outaded - refer to litecash/docs
 
-## Windows
+## Build static QT5
+
+### Windows
 
 - go to https://download.qt.io/official_releases/qt/5.11/5.11.1/single/ and download `qt-everywhere-src-...`
 - unpack, go to `.../qtbase/mkspecs/common/msvc-desktop.conf` and change all `MD` to `MT`

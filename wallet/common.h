@@ -1,4 +1,5 @@
 // Copyright 2018 The Beam Team
+// Copyright 2019 - 2022 The LiteCash Team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -361,7 +362,7 @@ namespace beam
             SERIALIZE(m_From, m_TxID, m_Type, m_Parameters);
         };
 
-        // Ñontext to take into account all async wallet operations
+        // ï¿½ontext to take into account all async wallet operations
         struct IAsyncContext
         {
             virtual void OnAsyncStarted() = 0;
