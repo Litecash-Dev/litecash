@@ -107,3 +107,5 @@ ui/beam.desktop
 ui/*.qm
 ui/translations.qrc
 beam_version.gen
+litecash-node.vcxproj.user
+INSTALL.vcxproj.user

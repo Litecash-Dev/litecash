@@ -1,4 +1,5 @@
 // Copyright 2019 The Beam Team
+// Copyright 2019 - 2022 The LiteCash Team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,12 +21,13 @@ namespace beam
         std::vector<std::string> result
         {
 #ifdef LITECASH_TESTNET
-	"144.202.112.212:10000",
-	"142.92.81.224:10000",
-	"158.69.223.139:10000"
+	    "144.202.112.212:10000",
+	    "142.92.81.224:10000",
+	    "158.69.223.139:10000"
 #else
         "explorer.lite-cash.com:10000",
-        "ca1.lite-cash.com:10000"
+        "ca1.lite-cash.com:10000",
+        "gibs.cash:10000"
 #endif
 	};
 
