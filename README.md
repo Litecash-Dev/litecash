@@ -18,13 +18,13 @@ https://explorer.lite-cash.com
 
 #### Peers:
 
-explorer.lite-cash.com:10000
+- explorer.lite-cash.com:10000
 
-ca1.lite-cash.com:10000
+- ca1.lite-cash.com:10000
 
-us1.lite-cash.com:10000
+- us1.lite-cash.com:10000
 
-gibs.cash:10000
+- gibs.cash:10000
 
 
 #### Mining Pools:
