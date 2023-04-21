@@ -1,0 +1,142 @@
+-------------------- START APP CONFIG ---------------------------------
+
+1. Set up and configure litecash-node. See litecash-node.cfg example.
+	a. run ./litecash-node (or set up as daemon)
+		a. allow node to fully sync. May take a while. 
+
+2. Set up and configure litecash-wallet. See litecash-wallet.cfg example.	
+	a. run ./litecash-wallet init
+		a. this initializes the wallet
+		b. if you did not change the config file from default the wallet database will be wallet.db
+		c. close this, you don't need it now
+	
+3. Set up and run wallet-api. See wallet-api.cfg example.
+	a. run ./wallet-api (or set up as daemon)
+		a. If cfg file has not been modified, it will use the default wallet.db file. 
+		b. if you set a password on wallet, you will need to modify the config file. 
+		c. Now you can run JSON-RPC api calls against the wallet.
+	
+4. (optional) Set up and run explorer-node. See explorer-node.cfg example.
+	a. run ./explorer-node (or set up as daemon)
+		a. modify config to point to local node (prefered) or one of the network nodes. 
+		b. can you API to get basic blockchain data. This is a privacy chain so info is limited.
+	
+-------------------- END APP CONFIG -----------------------------------
+	
+	
+-------------------- START WALLET API ---------------------------------
+
+API methods can have access rights control if you enable Access Control List (ACL) using --use_acl=1 option. Below is the list of all API methods with the access rights required to call the respective method:
+
+create_address       - write access
+validate_address     - read access
+addr_list            - read access
+delete_address       - write access
+edit_address         - write access
+tx_send              - write access
+tx_status            - read access
+tx_split             - write access
+tx_cancel            - write access
+get_utxo             - read access
+tx_list              - read access
+wallet_status        - read access
+lock
+unlock
+
+
+wallet_status:
+{"jsonrpc": "2.0", "id": 1, "method": "wallet_status"}
+
+EXAMPLE: curl -d '{"jsonrpc": "2.0", "id": 1, "method": "wallet_status"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:11111/api/wallet
+EXAMPLE Response: {"id":1,"jsonrpc":"2.0","result":{"available":0,"current_height":2026301,"current_state_hash":"3ed80d295c6f421adff53861502e34c7d189798ca87726655f4437640ceadaf0", "difficulty":774907.34375,"maturing":0,"prev_state_hash":"577ee1111051c2453a0407ce8a31170f368a6dc772b23327b9cc984a193eff64","receiving":0,"sending":0}}
+
+
+validate_address:
+{"jsonrpc": "2.0", "id": 1, "method": "validate_address", "params": { "address": "<address>"}}
+
+EXAMPLE: curl -d '{"params": { "address": "2cf3994a05d4ddb0acffe75f140a307878f16733c87f6ac02d5e69a35a88e6412cd" }, "jsonrpc": "2.0", "id": 1, "method": "validate_address"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:11111/api/wallet
+
+EXAMPLE Response: {"id":1,"jsonrpc":"2.0","result":{"is_mine":false,"is_valid":true}}
+
+
+tx_list: 
+{"jsonrpc": "2.0", "id": 1, "method": "tx_list"}
+
+
+addr_list:
+{"jsonrpc": "2.0", "id": 1, "method": "addr_list", "params":{"own": <true|false>}}
+
+
+get_utxo:
+{"jsonrpc": "2.0", "id": 1, "method": "get_utxo"}
+
+
+tx_cancel:
+{"jsonrpc": "2.0", "id": 1, "method": "tx_cancel", "params": {"txId": "<TxId>"}}
+
+
+tx_status:
+{"jsonrpc": "2.0", "id" 1, "method": "tx_status", "params": {"txId": "<TxId>"}}
+
+
+tx_split
+{"jsonrpc": "2.0", "id": 1, "method": "tx_split", "params":{"coins": {"<num coins>"}, "fee": "<fee>"}}
+
+
+tx_send:
+{"jsonrpc": "2.0", "id": 1, "method": "tx_send", "params": {"value": <value>, "fee": <fee>, "from": "<from address>", "address": "<to address>", "comment": "<text comment>"}}
+
+
+delete_address:
+{"jsonrpc": "2.0", "id": 1, "method": "delete_address", "params" :{"address": "<address>"}}
+
+
+edit_address:
+{"jsonrpc": "2.0", "id": 1, "method": "edit_address", "params": {"address": "<address>", "expiration": "<24h|never|expired>"}}
+
+
+create_address:
+{"jsonrpc": "2.0", "id": 1, "method": "create_address", "params": {"expiration": "<24h|never|expired>"}}
+
+-------------------- END WALLET API -------------------------------------
+
+
+-------------------- START EXPLORER API ---------------------------------
+
+
+Description: Gets explorer node status.
+	
+	http://localhost:8888/status
+
+	Example:
+
+	curl -H "Content-Type: application/json" -X GET http://localhost:8888/status
+	{"chainwork":"0x277a8c5d8e328fc2","hash":"fe64aa1f82bd9569a02542d02c067a82edbcfc9aee84df32ab7f6d9b7c764580","height":273091,"low_horizon":271650,"timestamp":1573812329}
+
+
+Description: Get specific block details
+	
+	http://localhost:8888/block
+
+	http://localhost:8888/block?kernel={kernel}
+	http://localhost:8888/block?hash={hash}
+	http://localhost:8888/block?height={height}
+
+	Example:
+
+	curl -H "Content-Type: application/json" -X GET http://localhost:8888/block?height=1202
+	{"chainwork":"0x4b2000000","difficulty":1.0,"found":true,"hash":"586738cb8826a8b2e72a84345a181ab20a7b6afc9e877e9f765a25d526c94c7b","height":1202,"inputs":[],"kernels":[{"excess":"0xe5b98b3e5e562ba51e0ce779f92567d01d8eef947e83431a45c3d88268245124","fee":0,"id":"fa75d48fd22d0b2525b5cec1e60b826c5ef3cc5838c6767046946ca594ecf781","maxHeight":18446744073709551615,"minHeight":1202}],"outputs":[{"coinbase":true,"commitment":"0x33732d46991f87dc5ae3f3701e55f708bf82efb18edf85905e01f16383f87c9b","incubation":0,"maturity":1205}],"prev":"b4f8673c8340b74b6a9a253d5255ab97079e42ef0a7b1be560474cb12df00dd5","subsidy":27500000000,"timestamp":1552044533}
+
+
+Description: Gets blocks info for specified range, where count should be <= 1500.
+
+	http://localhost:8888/blocks?height={start}&n={count}
+
+
+	Example:
+
+	curl -H "Content-Type: application/json" -X GET 'http://localhost:8888/blocks?height=1202&n=10'
+	 {"chainwork":"0x4b2000000","difficulty":1.0,"found":true,"hash":"586738cb8826a8b2e72a84345a181ab20a7b6afc9e877e9f765a25d526c94c7b","height":1202,"inputs":[],"kernels":[{"excess":"0xe5b98b3e5e562ba51e0ce779f92567d01d8eef947e83431a45c3d88268245124","fee":0,"id":"fa75d48fd22d0b2525b5cec1e60b826c5ef3cc5838c6767046946ca594ecf781","maxHeight":18446744073709551615,"minHeight":1202}],"outputs":[{"coinbase":true,"commitment":"0x33732d46991f87dc5ae3f3701e55f708bf82efb18edf85905e01f16383f87c9b","incubation":0,"maturity":1205}],"prev":"b4f8673c8340b74b6a9a253d5255ab97079e42ef0a7b1be560474cb12df00dd5","subsidy":27500000000,"timestamp":1552044533}
+ 
+ 
+ -------------------- END EXPLORER API ---------------------------------
