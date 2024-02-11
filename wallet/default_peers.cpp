@@ -26,8 +26,7 @@ namespace beam
 	    "158.69.223.139:10000"
 #else
         "explorer.lite-cash.com:10000",
-        "ca1.lite-cash.com:10000",
-        "gibs.cash:10000"
+        "ca1.lite-cash.com:10000"
 #endif
 	};
 
