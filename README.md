@@ -24,14 +24,6 @@ https://explorer.lite-cash.com
 
 - us1.lite-cash.com:10000
 
-- gibs.cash:10000
-
-
-#### Mining Pools:
-
-https://gibs.cash (Official LiteCash Pool)
-
-https://www2.coinmine.pl/cash/ (Community Provided Pool)
 
 #### Exchanges:
 
