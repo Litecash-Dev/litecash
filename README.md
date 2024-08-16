@@ -13,7 +13,7 @@ https://lite-cash.com
 
 #### Explorer:
 
-https://explorer.lite-cash.com(does not work at the moment)
+https://explorer.lite-cash.com (does not work at the moment)
 
 
 #### Peers:
