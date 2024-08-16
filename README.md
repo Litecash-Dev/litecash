@@ -13,16 +13,12 @@ https://lite-cash.com
 
 #### Explorer:
 
-https://explorer.lite-cash.com
+https://explorer.lite-cash.com(does not work at the moment)
 
 
 #### Peers:
 
-- explorer.lite-cash.com:10000
-
-- ca1.lite-cash.com:10000
-
-- us1.lite-cash.com:10000
+(will be updated soon)
 
 
 #### Exchanges:
